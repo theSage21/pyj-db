@@ -13,3 +13,6 @@
     - `insert into tab (x, y) values (1, 'x')`: Inserting into tables.
     - `select y from tab where x = 10`: Speed measurement.
     - `select y from tab where x = 10`: Indexing.
+- Day 3
+    - `select x from tab where x + 1 < 10`: Query optimization
+    - `select/delete x from tab where x = 10`: Locking / WAL
