@@ -1,6 +1,15 @@
 import json
 
 
+def normalize_sql(sql):
+    final = []
+    for line in sql.split("\n"):
+        for c in ",()":
+            line = line.replace(c, f" {c} ")
+        final.append(line.strip())
+    return "\n".join(final)
+
+
 def make_ast(sql):
     """
     Turn a given sql query into an abstract syntax tree so that calculations
@@ -24,5 +33,6 @@ def make_ast(sql):
 
 
 def run(sql):
+    sql = normalize_sql(sql)
     ast = make_ast(sql)
-    return json.dumps({"AST": ast}, indent=2)
+    return json.dumps({"sql": sql, "AST": ast}, indent=2)
