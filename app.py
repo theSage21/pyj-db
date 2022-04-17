@@ -21,6 +21,14 @@ def hello_world():
             </form>
             <hr>
             <pre>{result}</pre>
+            <hr>
+            <h2>Examples</h2>
+            <pre>
+select 1 + 1
+create table mytable x int, y string
+insert into mytable (x, y) values (1, 'something')
+select x, y from mytable
+            </pre>
         </body>
     </html>
     """
