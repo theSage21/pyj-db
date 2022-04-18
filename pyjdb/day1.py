@@ -7,7 +7,7 @@ def normalize_sql(sql):
     for line in sql.split("\n"):
         for c in ",()":
             line = line.replace(c, f" {c} ")
-        final.append(line.strip())
+        final.append(" ".join(line.strip().split()))
     return "\n".join(final)
 
 
