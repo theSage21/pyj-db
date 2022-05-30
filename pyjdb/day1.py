@@ -11,6 +11,15 @@ def normalize_sql(sql):
     return "\n".join(final)
 
 
+def convertType(value):
+    try:
+        return int(value)
+    except ValueError as e:
+        if len(value) >= 2 and value[0] == "'" and value[-1] == "'":
+            return value[1:-1]
+    return value
+
+
 def make_ast(sql):
     """
     Turn a given sql query into an abstract syntax tree so that calculations
@@ -27,7 +36,7 @@ def make_ast(sql):
             columns, table = tail.split("from")
         # Columns
         columns = columns.split(",")
-        AST["table"] = table
+        AST["table"] = table.strip()
         AST["columns"] = []
         for index, col in enumerate(columns):
             AST["columns"].append(
@@ -67,7 +76,8 @@ def make_ast(sql):
                 stack = stack[:-1]
             if buff:
                 stack = stack[:-1]
-                row = [i.strip() for i in " ".join(reversed(buff)).split(",")]
+                row = [convertType(i.strip())
+                       for i in " ".join(reversed(buff)).split(",")]
                 AST["columns" if is_header else "values"] = row
 
         # Headers
