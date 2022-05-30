@@ -1,0 +1,36 @@
+{
+  "tables": {
+    "mytable": [
+      {
+        "index": 0,
+        "name": "x",
+        "type": "int"
+      },
+      {
+        "index": 1,
+        "name": "y",
+        "type": "string"
+      }
+    ]
+  },
+  "values": {
+    "mytable": [
+      [
+        1,
+        "something"
+      ],
+      [
+        1,
+        "something"
+      ],
+      [
+        1,
+        "something"
+      ],
+      [
+        1,
+        "something"
+      ]
+    ]
+  }
+}
